@@ -1,8 +1,5 @@
 data/*
-!data/.gitkeep
 results/figures/*
-!results/figures/.gitkeep
 results/sup_figures/*
-!results/sup_figures/.gitkeep
 .DS_Store
 __pycache__
