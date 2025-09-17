@@ -1,0 +1,33 @@
+title: EFA using combined 
+
+data: file = "C:/mplus/comfort_PROs.csv";
+listwise = off;
+
+variable: names are id E1 E2 E3 E4 E5 E6 E7 E8
+E9 E10 E11 E12 E13 E14 pr_con pr_pain pr_dia
+pr_ds pr_blo pr_ref pr_anx pr_dep
+sagis_1 sagis_2 sagis_3 sagis_4 sagis_5 sagis_6
+sagis_7 sagis_8 sagis_9 sagis_10 sagis_11
+sagis_12 sagis_13 sagis_14 sagis_15 sagis_16
+sagis_17 sagis_18 sagis_19 sagis_20 sagis_21
+sagis_22;
+
+!dropped pr_naus as insufficient coverage
+    usevar = E1-E14 sagis_1-sagis_14 sagis_16-sagis_21 
+    pr_con pr_pain pr_dia pr_ds pr_blo pr_ref pr_anx pr_dep;
+
+    categorical are sagis_1-sagis_14 sagis_16-sagis_21 E1-E14;
+
+    missing = all(-999);
+
+model: 
+f1-f7 BY E1-E14 sagis_1-sagis_14 sagis_16-sagis_21
+    pr_con pr_pain pr_dia pr_ds pr_blo pr_ref pr_anx pr_dep(*1);
+
+analysis:
+iterations = 100000;
+
+output: TECH1;
+
+savedata: file = comfort_efascore.dat;
+save = FSCORES;
