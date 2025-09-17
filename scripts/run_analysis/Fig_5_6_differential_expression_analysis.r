@@ -35,7 +35,7 @@ L4.kegg <- L4.kegg[,order(colnames(L4.kegg))]
 bg_genes <- rownames(L4.kegg) %>%
   stringr::str_extract("^.{6}") 
 
-save(bg_genes, file=paste0(config$data_processed, "FEA_bg_genes.RData"))
+save(bg_genes, file=paste0(config$data_results, "FEA_bg_genes.RData"))
 
 L4.kegg <- as.data.frame(L4.kegg[!(row.names(L4.kegg) %in% "Not assigned"),]) # drop anything containing others or not assigned
 L4.kegg <- L4.kegg |> filter(!str_detect(rownames(L4.kegg), "Other"))
@@ -134,7 +134,7 @@ merged_labels$sample_id <- as.character(merged_labels$sample_id)
 merged_labels$ref_clust <- as.factor(merged_labels$ref_clust)
 
 # Run differential expression analysis ----
-source("analysis/scripts/run_analysis/utils/DE_1-6.r")
-source("analysis/scripts/run_analysis/utils/DE_7-6.r")
-source("analysis/scripts/run_analysis/utils/DE_8-6.r")
-source("analysis/scripts/run_analysis/utils/DE_11-6.r")
+source("scripts/run_analysis/utils/DE_1-6.r")
+source("scripts/run_analysis/utils/DE_7-6.r")
+source("scripts/run_analysis/utils/DE_8-6.r")
+source("scripts/run_analysis/utils/DE_11-6.r")

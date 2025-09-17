@@ -3,7 +3,7 @@
 ref_clust <- read.csv(paste0(config$data_cluster_assignments, "biological_clusters.csv"), header=TRUE, row.names = 1) 
 
 # Import factor scores
-factor_scores <- read.table(paste0(config$data_processed, "comfort_factor_scores.dat"), header=FALSE) 
+factor_scores <- read.table(paste0(config$data_results, "comfort_factor_scores.dat"), header=FALSE) 
 
 factor_scores <- factor_scores %>%
   dplyr::select('V43', 'V45', 'V47', 'V49', 'V51', 'V53', 'V55') %>%

@@ -106,5 +106,5 @@ metagenomics <- firm_bac_ratio %>%
 
 metagenomics <- metagenomics %>% tibble::column_to_rownames(var = "rowname")
 
-write.csv(metagenomics, paste0(config$data_processed, "comfort_metagenomics_diversityAndFBratio.csv"), row.names = TRUE)
+write.csv(metagenomics, paste0(config$data_results, "comfort_metagenomics_diversityAndFBratio.csv"), row.names = TRUE)
 

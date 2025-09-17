@@ -3,7 +3,7 @@ import subprocess
 
 config_data = load_config('config.yml')
 
-load_font()
+load_font(config_data)
 
 # Figure 1
 make_figure_1A(config_data)
@@ -18,4 +18,4 @@ make_figure_4A(config_data)
 make_figure_S3A_S3B(config_data)
 
 # Make remaining figure panels using R 
-subprocess.call("Rscript analysis/scripts/make_figures/utils/make_R_figures.r", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
+subprocess.call("Rscript scripts/make_figures/utils/make_R_figures.r", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)

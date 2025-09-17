@@ -1,4 +1,5 @@
 library(tidyr)
+library(dplyr)
 config <- config::get()
 
 # Load data ----
@@ -25,11 +26,11 @@ colnames(bile_acids) <- paste0('bile_', colnames(bile_acids))
 bile_acids <- bile_acids %>% tibble::rownames_to_column(var = "rowname")
 rm(comfort_bile)
 
-metagenomics <- read.csv(paste0(config$data_processed, "comfort_metagenomics_diversityAndFBratio.csv"), row.names = 1)
+metagenomics <- read.csv(paste0(config$data_results, "comfort_metagenomics_diversityAndFBratio.csv"), row.names = 1)
 metagenomics <- metagenomics %>% tibble::rownames_to_column(var = "rowname")
 
 # Load symptom factor scores ----
-factor_scores <- read.table(paste0(config$data_processed, "comfort_factor_scores.dat"), 
+factor_scores <- read.table(paste0(config$data_results, "comfort_factor_scores.dat"), 
                             header=FALSE) 
 
 factor_scores <- factor_scores %>%
@@ -69,14 +70,14 @@ merged_labels$ref_clust <- as.factor(merged_labels$ref_clust)
 
 # Combine all measurements with cluster labels----
 combined <- merged_labels %>%
-  full_join(bile_acids, by = "rowname") %>%
-  full_join(org_acids, by = "rowname") %>%
-  full_join(amino_acids, by = "rowname") %>%
-  full_join(metagenomics, by = "rowname") %>%
-  full_join(factor_scores, by = "rowname") %>%
-  full_join(comfort_demographic, by = "rowname") %>%
-  full_join(comfort_diet, by = "rowname") %>%
-  drop_na(ref_clust)
+  dplyr::full_join(bile_acids, by = "rowname") %>%
+  dplyr::full_join(org_acids, by = "rowname") %>%
+  dplyr::full_join(amino_acids, by = "rowname") %>%
+  dplyr::full_join(metagenomics, by = "rowname") %>%
+  dplyr::full_join(factor_scores, by = "rowname") %>%
+  dplyr::full_join(comfort_demographic, by = "rowname") %>%
+  dplyr::full_join(comfort_diet, by = "rowname") %>%
+  rstatix::drop_na(ref_clust)
 
 combined <- combined %>% tibble::column_to_rownames(var = "rowname")
 

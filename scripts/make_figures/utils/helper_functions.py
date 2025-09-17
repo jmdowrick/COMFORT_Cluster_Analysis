@@ -9,8 +9,8 @@ from sklearn.cluster import AgglomerativeClustering
 from sklearn.metrics import davies_bouldin_score, silhouette_score
 from scipy.cluster.hierarchy import dendrogram
 
-def load_font():
-    font_path = "SourceSansPro-Semibold.ttf"
+def load_font(config_data):
+    font_path = config_data['default']['font_path']
     source_sans = font_manager.FontProperties(fname=font_path)
     font_manager.fontManager.addfont(font_path)
     plt.rcParams["font.family"] = source_sans.get_name()

@@ -25,5 +25,11 @@ The mplus input files are stored here. `240808_efa_comfort.inp` calculates the f
 ## make_figures
 Panels for all figures in the paper were generated using `make_figures.py`.
 
+## Acknowledgement 
+This study and its authors were supported by the New Zealand National Science Challenge on High-Value Nutrition. 
+
 ## References
 Heenan P, Creemers RH, Sharma S, Keenan J, Bayer S, Young W, Cooney J, Armstrong K, Fraser K, Skidmore PM, Talley NJ, Roy N, Gearry RB. *Cohort Profile: The Christchurch IBS cOhort to investigate Mechanisms FOr gut Relief and improved Transit (COMFORT).* Inflamm Intest Dis. 2020;5(3):132–143. doi:[10.1159/000508160](https://doi.org/10.1159/000508160).
+
+# Other information
+This project includes the Source Sans Pro font, licensed under the SIL Open Font License, Version 1.1.
